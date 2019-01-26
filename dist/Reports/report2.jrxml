@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2ce192d-d327-411e-b9b4-07f6a9169b84">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     bankaccounts.`AccountNumber` AS bankaccounts_AccountNumber,
+     bankaccounts.`Name` AS bankaccounts_Name,
+     bankaccounts.`IdNumber` AS bankaccounts_IdNumber,
+     bankaccounts.`University` AS bankaccounts_University,
+     bankaccounts.`Faculty` AS bankaccounts_Faculty,
+     bankaccounts.`Course` AS bankaccounts_Course,
+     bankaccounts.`StudyYear` AS bankaccounts_StudyYear,
+     bankaccounts.`PhoneNumber` AS bankaccounts_PhoneNumber,
+     bankaccounts.`EmailAddress` AS bankaccounts_EmailAddress,
+     bankaccounts.`AccountType` AS bankaccounts_AccountType,
+     bankaccounts.`OpeningDate` AS bankaccounts_OpeningDate,
+     bankaccounts.`DOB` AS bankaccounts_DOB,
+     bankaccounts.`Address` AS bankaccounts_Address,
+     bankaccounts.`ChequeIssue` AS bankaccounts_ChequeIssue,
+     bankaccounts.`AccountStatus` AS bankaccounts_AccountStatus
+FROM
+     `bankaccounts` bankaccounts]]>
+	</queryString>
+	<field name="bankaccounts_AccountNumber" class="java.lang.String"/>
+	<field name="bankaccounts_Name" class="java.lang.String"/>
+	<field name="bankaccounts_IdNumber" class="java.lang.Integer"/>
+	<field name="bankaccounts_University" class="java.lang.String"/>
+	<field name="bankaccounts_Faculty" class="java.lang.String"/>
+	<field name="bankaccounts_Course" class="java.lang.String"/>
+	<field name="bankaccounts_StudyYear" class="java.lang.String"/>
+	<field name="bankaccounts_PhoneNumber" class="java.lang.String"/>
+	<field name="bankaccounts_EmailAddress" class="java.lang.String"/>
+	<field name="bankaccounts_AccountType" class="java.lang.String"/>
+	<field name="bankaccounts_OpeningDate" class="java.sql.Date"/>
+	<field name="bankaccounts_DOB" class="java.lang.String"/>
+	<field name="bankaccounts_Address" class="java.lang.String"/>
+	<field name="bankaccounts_ChequeIssue" class="java.lang.String"/>
+	<field name="bankaccounts_AccountStatus" class="java.lang.String"/>
+	<group name="bankaccounts_AccountNumber">
+		<groupExpression><![CDATA[$F{bankaccounts_AccountNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="797" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="94d59272-5381-4ab7-ad29-1e7a26324547"/>
+				</frame>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="SubTitle" x="201" y="0" width="592" height="24" forecolor="#FFFFFF" uuid="ec9abf22-1b72-46dd-911c-b14b79652d10"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bankaccounts_AccountNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="3" y="0" width="189" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="486e1280-1632-4a3c-8718-3f915dee9775"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Bank Account Number]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="b5c6d15d-af97-4daa-8817-e37833459acf"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="3ae29059-9943-43cb-84a2-3187f6e3052f"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[KCSU Bank]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="36ec9a41-2452-4fd2-98d1-5797291bb14b"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Account Holders Records]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="fd5d9808-5703-4f0e-8a55-e5e15028c07d"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="fab0cbbf-9b32-4943-ad42-dabecd11f53b"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="168" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="437" y="18" width="135" height="18" forecolor="#FF0066" uuid="2bf51969-0433-45f4-ac3b-29134134c19f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_IdNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="123" y="123" width="179" height="18" forecolor="#FF0066" uuid="18732d32-5d76-49a9-8a57-2d8e0a829412"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_Faculty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="436" y="43" width="135" height="18" forecolor="#FF0066" uuid="c3e8828a-696d-47bb-bd8a-65980e2a1ed4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_StudyYear}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="659" y="96" width="142" height="18" forecolor="#FF0066" uuid="5eae99fa-9125-4498-bfe4-bc1bead3525e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_EmailAddress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="437" y="69" width="134" height="18" forecolor="#FF0066" uuid="b0c513e1-a99c-42a4-8730-c7d49fc589ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_OpeningDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="437" y="122" width="360" height="18" forecolor="#FF0066" uuid="92f47ff1-5849-4a27-8acf-e2d39bd5ee68"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_Address}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="436" y="96" width="135" height="18" forecolor="#FF0066" uuid="9a5d4968-5881-449f-9849-db29fb73a659"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_AccountStatus}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="119" y="44" width="184" height="18" forecolor="#FF0066" uuid="df3a0103-fae4-4f7b-80b8-8230c0a1ca52"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_Course}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="659" y="44" width="142" height="18" forecolor="#FF0066" uuid="499154e2-c8b3-4d0f-bd57-7ea511a06e53"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_PhoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="119" y="69" width="184" height="18" forecolor="#FF0066" uuid="d5b469cc-5404-41d5-b215-15ec0d76df32"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_AccountType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="659" y="69" width="142" height="18" forecolor="#FF0066" uuid="92801a7e-a65b-41cb-a6f5-b51fefeaa7e5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_DOB}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="119" y="96" width="184" height="18" forecolor="#FF0066" uuid="07ff67db-28f1-4049-b511-2c26a0ea4065"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_ChequeIssue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="2" y="18" width="110" height="18" forecolor="#000000" uuid="ee62194f-820f-48a3-b275-e0b4eb78cc85"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accounts Name]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="118" y="18" width="184" height="18" forecolor="#FF0066" uuid="d530a8fe-4d0f-4ac0-a9bc-252df6728af2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="659" y="18" width="142" height="18" forecolor="#FF0066" uuid="642f10a5-dc75-40e7-a5b1-829d78cc39d7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankaccounts_University}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="334" y="18" width="97" height="18" forecolor="#000000" uuid="10519dd5-d6a5-4514-b8af-61d33dd17a5b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="576" y="18" width="73" height="18" forecolor="#000000" uuid="0784312e-76ec-4bab-a7df-0f6bb9c2af16"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[University]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="122" width="110" height="18" forecolor="#000000" uuid="693cf4e2-de61-45ef-9cea-978ba3766edd"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Faculty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="-1" y="43" width="111" height="18" forecolor="#000000" uuid="e4605e54-70f9-4496-bcb1-002b1fca5a46"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Course]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="43" width="97" height="18" forecolor="#000000" uuid="4981f5c4-afb7-4845-9cba-4bc00d696828"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[StudyYear]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="576" y="44" width="73" height="18" forecolor="#000000" uuid="56331ffd-c0f6-480e-af0f-e04c3833833f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PhoneNumber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="576" y="96" width="73" height="18" forecolor="#000000" uuid="c3db3798-e305-4072-9922-b5a1d5758ab0"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EmailAddress]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="69" width="110" height="18" forecolor="#000000" uuid="fae5bd70-2f24-45fa-9900-3b0690db22d1"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AccountT ype]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="334" y="69" width="97" height="18" forecolor="#000000" uuid="b3b0ab66-7c7a-4ea6-a62b-808b28736542"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OpeningDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="579" y="69" width="70" height="18" forecolor="#000000" uuid="328666c1-81bb-43f0-a970-3ed37b03ed94"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="96" width="107" height="18" forecolor="#000000" uuid="6c3e922f-cb5d-46f9-8fb4-151b282832fa"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="123" width="97" height="18" forecolor="#000000" uuid="7f93b182-34df-48d0-b765-7e272b1771d2"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ChequeIssue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="334" y="96" width="96" height="18" forecolor="#000000" uuid="2fabf109-54de-467e-ba23-fba4c54380dd"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account Status]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="d1bf17dd-77ce-4613-a00d-9a99887aca8b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="cee7d238-f709-4e4e-9904-a69eb176d27f"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="9d9d2e83-0ad8-4024-bcdb-6c60b0682618"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="4a8af612-9b85-43a6-976a-0f6ee615af20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="3894d41e-06c4-4fab-b8dd-ce752ee9addd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

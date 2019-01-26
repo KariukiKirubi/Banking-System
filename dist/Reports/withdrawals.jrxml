@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="withdrawals" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="821d0fa1-81ed-4b72-8323-ee2175e0500e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     withdrawals.`Id` AS withdrawals_Id,
+     withdrawals.`AccountNumber` AS withdrawals_AccountNumber,
+     withdrawals.`Name` AS withdrawals_Name,
+     withdrawals.`IdNumber` AS withdrawals_IdNumber,
+     withdrawals.`AccountType` AS withdrawals_AccountType,
+     withdrawals.`Date` AS withdrawals_Date,
+     withdrawals.`InitialAmount` AS withdrawals_InitialAmount,
+     withdrawals.`Amount` AS withdrawals_Amount,
+     withdrawals.`NewBalance` AS withdrawals_NewBalance
+FROM
+     `withdrawals` withdrawals]]>
+	</queryString>
+	<field name="withdrawals_Id" class="java.lang.Integer"/>
+	<field name="withdrawals_AccountNumber" class="java.lang.String"/>
+	<field name="withdrawals_Name" class="java.lang.String"/>
+	<field name="withdrawals_IdNumber" class="java.lang.Integer"/>
+	<field name="withdrawals_AccountType" class="java.lang.String"/>
+	<field name="withdrawals_Date" class="java.sql.Date"/>
+	<field name="withdrawals_InitialAmount" class="java.lang.Integer"/>
+	<field name="withdrawals_Amount" class="java.lang.Integer"/>
+	<field name="withdrawals_NewBalance" class="java.lang.Integer"/>
+	<group name="withdrawals_AccountNumber">
+		<groupExpression><![CDATA[$F{withdrawals_AccountNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="555" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="e3213895-9ad4-4017-bf5e-7dd5ae6e928c"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="147" y="0" width="347" height="24" forecolor="#FFFFFF" uuid="1f214bde-6c3c-4c82-8f7f-67a03a451f1e"/>
+						<textElement>
+							<font size="14" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{withdrawals_AccountNumber}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="Column header" x="2" y="0" width="144" height="24" forecolor="#FFFFFF" backcolor="#000000" uuid="82830539-8030-4992-9b01-3d3b116221c5"/>
+						<textElement textAlignment="Center">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Account Number]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="11"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="138" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="95" backcolor="#000000" uuid="e9e7f9d5-c64e-4070-95fd-5850222d481f"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="550" height="66" uuid="a586415f-c197-48fd-9728-d90b11f78311"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[ KCSU Bank]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="2" y="66" width="548" height="29" forecolor="#FFFFFF" uuid="3d5295b3-35a9-4885-977e-d5a23150cc04"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Account Withdrawals]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="555" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e9fec259-70fd-418e-9155-d985f614cc7e"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="406" y="0" width="144" height="20" forecolor="#FFFFFF" uuid="e2d9e17f-59e1-42b7-a04a-eeb11e5b5926"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="8" width="550" height="18" uuid="28f32f3d-bec5-47f1-a82a-27d2aa0f6b97"/>
+				<staticText>
+					<reportElement style="Column header" x="6" y="0" width="99" height="18" forecolor="#CC0000" uuid="63ac29ca-8d40-4331-b7de-9936845642e5"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Withdrawals Id]]></text>
+				</staticText>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="113" y="34" width="140" height="18" forecolor="#0033FF" uuid="e9591127-e014-4107-890d-2cee508d37e0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="113" y="60" width="140" height="18" forecolor="#0033FF" uuid="e2fa32a6-3b4f-441c-858d-fa94b05447da"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_AccountType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="113" y="85" width="140" height="18" forecolor="#0033FF" uuid="85c106b7-95bb-479e-bbf4-c45ab01ecdfc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_InitialAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="113" y="109" width="140" height="18" forecolor="#0033FF" uuid="24ae6765-ba53-4dd9-acfc-85dc242796d0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_NewBalance}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="105" y="8" width="159" height="18" forecolor="#00CCFF" uuid="b3f0fd3e-4dce-47f9-9803-d9ef19f3646a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_Id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="2" y="34" width="99" height="18" forecolor="#000000" uuid="cc5bc6e6-b337-4187-8586-fbfddc7f4868"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account Name]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="418" y="56" width="132" height="18" forecolor="#0033FF" uuid="9ad4dfd7-089d-4d35-9817-314bd6b57d07"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_Date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="283" y="34" width="123" height="18" forecolor="#000000" uuid="76fea8f0-fd4c-4ce2-bf5e-25a696f2bcad"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[National Id Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="6" y="60" width="95" height="18" forecolor="#000000" uuid="e14a499e-c499-4c47-bfae-5f10392ff55f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account  Type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="418" y="85" width="132" height="18" forecolor="#0033FF" uuid="3e234553-ef77-4b14-be2f-9f0210eab3a6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_Amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="283" y="59" width="123" height="18" forecolor="#000000" uuid="d78ba0bd-8697-4482-a859-51031028b714"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[With Drawal Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="6" y="85" width="99" height="18" forecolor="#000000" uuid="a860867d-6b66-4b37-ad64-8b17686ddd5e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Initial   Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="283" y="85" width="123" height="18" forecolor="#000000" uuid="af6c3d0c-3d5d-4ac6-b56e-9dedf32b0586"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[withdrawals Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="109" width="98" height="18" forecolor="#000000" uuid="ad70aeca-4df2-4c6c-ae57-b31eb083ca0b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[New  Balance]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="418" y="34" width="132" height="18" forecolor="#0033FF" uuid="218f7fca-13a9-4523-ac00-4f6eb134f222"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawals_IdNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1f1d1543-908a-4407-a6bd-a07b750a89b8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="550" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="d8f3020f-39a5-4c4e-b8bf-332380d56815"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="510" y="5" width="40" height="20" forecolor="#FFFFFF" uuid="436e3192-3bd9-4d6d-a6ad-2d5d1ddbe88f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="430" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="d70311b6-37bd-4406-ab55-0d33a55dab1d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="92897874-8a83-44fd-9d26-2c67984a978b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

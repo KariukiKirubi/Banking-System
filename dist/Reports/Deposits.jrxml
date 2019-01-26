@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Deposits" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e789857c-da32-4dff-bd8b-2b565b30b241">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     bankdeposits.`Id` AS bankdeposits_Id,
+     bankdeposits.`AccountNumber` AS bankdeposits_AccountNumber,
+     bankdeposits.`Name` AS bankdeposits_Name,
+     bankdeposits.`IdNumber` AS bankdeposits_IdNumber,
+     bankdeposits.`AccountType` AS bankdeposits_AccountType,
+     bankdeposits.`Date` AS bankdeposits_Date,
+     bankdeposits.`InitialAmount` AS bankdeposits_InitialAmount,
+     bankdeposits.`Amount` AS bankdeposits_Amount,
+     bankdeposits.`NewBalance` AS bankdeposits_NewBalance
+FROM
+     `bankdeposits` bankdeposits]]>
+	</queryString>
+	<field name="bankdeposits_Id" class="java.lang.Integer"/>
+	<field name="bankdeposits_AccountNumber" class="java.lang.String"/>
+	<field name="bankdeposits_Name" class="java.lang.String"/>
+	<field name="bankdeposits_IdNumber" class="java.lang.Integer"/>
+	<field name="bankdeposits_AccountType" class="java.lang.String"/>
+	<field name="bankdeposits_Date" class="java.sql.Date"/>
+	<field name="bankdeposits_InitialAmount" class="java.lang.Integer"/>
+	<field name="bankdeposits_Amount" class="java.lang.Integer"/>
+	<field name="bankdeposits_NewBalance" class="java.lang.Integer"/>
+	<group name="bankdeposits_AccountNumber">
+		<groupExpression><![CDATA[$F{bankdeposits_AccountNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="7" width="550" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="e5076cbf-5ea8-4603-863d-a2616e091372"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="144" y="0" width="404" height="24" forecolor="#FFFFFF" uuid="ab03e815-3e93-4e79-8891-6ce36fa211e0"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{bankdeposits_AccountNumber}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="Column header" x="0" y="0" width="144" height="24" forecolor="#FFFFFF" backcolor="#000000" uuid="3c143b30-e036-4b7f-8026-11e275a9ee87"/>
+						<textElement textAlignment="Center">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Account Number]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="72a04f75-d0c5-42c4-9fb2-43c3815bfc39"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="451" height="66" uuid="97c9bad4-2b1e-493d-adb1-f06e39cfae71"/>
+					<textElement textAlignment="Center">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[ KCSU Bank]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="2" y="66" width="449" height="29" forecolor="#FFFFFF" uuid="5892176f-ade5-4451-8e75-ba7e24b6ec8a"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Account Deposits]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="6e4e64e5-c753-4f1d-a858-cdea186804d0"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="0" width="144" height="20" forecolor="#FFFFFF" uuid="7af98a99-6427-4234-9564-ec41e8616a63"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="2" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="96" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="17bdce61-0c42-4565-ad13-17c6af0ef1a2"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="133" y="0" width="69" height="18" forecolor="#CC0000" uuid="a8880a49-edeb-461d-afa2-a7b51bfb8ccd"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bankdeposits_Id}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="61" y="27" width="138" height="18" forecolor="#0033FF" uuid="d8652929-52a3-4353-b9ef-68fc8198ad03"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="61" y="50" width="138" height="18" forecolor="#0033FF" uuid="f7084132-99bf-4fcb-9212-1ea2206a2e4b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_IdNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="281" y="50" width="105" height="18" forecolor="#0033FF" uuid="2eeee09b-7e95-41a6-b84a-a455522397f7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="281" y="27" width="105" height="18" forecolor="#0033FF" uuid="af1698e7-a5f3-42be-b6eb-7e581b3c031a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_AccountType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="481" y="27" width="80" height="18" forecolor="#0033FF" uuid="bf24f7a7-137d-47cb-bbbe-eddfbf9a833e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_InitialAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="481" y="50" width="80" height="18" forecolor="#0033FF" uuid="590853d9-5156-4b91-bbf9-5a39e9daed26"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_Amount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="61" y="74" width="138" height="18" forecolor="#0033FF" uuid="5ec3c1e1-9a2d-42d1-ace4-c8f87c96c0e9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankdeposits_NewBalance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="21" y="0" width="110" height="18" forecolor="#CC0000" uuid="ef9b2b7f-21d8-4123-98c9-291ab3dce6b0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deposits Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="27" width="54" height="18" forecolor="#000000" uuid="f11269b8-cdba-4381-bc04-9ebb07ac00ee"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="50" width="54" height="18" forecolor="#000000" uuid="305b1f36-0458-4b46-8710-c6d75f3bcbc8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IdNumber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="203" y="27" width="72" height="18" forecolor="#000000" uuid="eb76daa1-2e3c-4ff9-809a-cd8b320b79d4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="203" y="50" width="72" height="18" forecolor="#000000" uuid="89529ff0-752c-4ba3-8d6f-0dc6887283ca"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="390" y="27" width="85" height="18" forecolor="#000000" uuid="2c441241-f055-434c-8dcd-e226334bcc8a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Initial Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="391" y="50" width="85" height="18" forecolor="#000000" uuid="84df3e55-7377-434d-8565-f567a87e7284"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deposited Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="74" width="54" height="18" forecolor="#000000" uuid="12c70657-75fb-47ac-aa45-2f878cabb74c"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NewBalance]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1f3a2ec4-49dd-4516-8571-7041510929c8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="30fe8b91-af48-4f7e-9120-7fd18f44b229"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="a074553a-87da-48b3-bcd9-28557ca73675"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="54fb3a6f-461e-416a-b872-51837808bfe2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="342e9ede-2d3c-4ab5-bd42-8ee473d27680"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
